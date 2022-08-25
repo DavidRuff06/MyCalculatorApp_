@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     String s = "";
 
@@ -15,9 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void solve(int i){
 
-    }
 /*
 
  */
@@ -77,10 +78,39 @@ public class MainActivity extends AppCompatActivity {
             s += ".";
         } else if(buttonPressed == EQUALS){
             s += " = ";
+            solve(s);
         }
 
         tv.setText(s);
+    }
+/*
+Have the
+ */
+    public void solve(String string){
+        String nums = string;
+//        String holdNum = "";
+//        String holdSim = "";
+//        if(nums.equals(" + ")){
+//            holdSim = "+";
+//        } else {
+//            holdNum = nums;
+//        }
 
+        int number = Integer.parseInt(nums);
+        System.out.println(number);
+        //https://mkyong.com/java/java-how-to-split-a-string/
+        String[] numList = nums.split(" ");
+        System.out.println(numList);
+        String num = numList[0];
+        String numDos = numList[2];
+        int numOne = Integer.parseInt(num);
+        int numTwo = Integer.parseInt(numDos);
+        
+//        for(int i = 1; i < numList.length-5;){
+//            if(i%2!=0){
+//
+//            }
+        }
     }
 
 }
