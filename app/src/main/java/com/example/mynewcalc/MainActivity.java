@@ -74,37 +74,41 @@ public class MainActivity extends AppCompatActivity {
             s += " - ";
         } else if(buttonPressed == PLUS){
             s += " + ";
-        } else if(buttonPressed == DECIMAL){
+        } else if(buttonPressed == DECIMAL) {
             s += ".";
-        } else if(buttonPressed == EQUALS){
-            s += " = ";
-            solve(s);
         }
-
         tv.setText(s);
+       if(buttonPressed == EQUALS){
+           tv.setText("");
+        solve(s);
+        s = "";
+    }
     }
 /*
 Have the
  */
     public void solve(String string){
+        TextView tv = findViewById(R.id.calcScreen);
         String nums = string;
-//        String holdNum = "";
-//        String holdSim = "";
-//        if(nums.equals(" + ")){
-//            holdSim = "+";
-//        } else {
-//            holdNum = nums;
-//        }
 
-        int number = Integer.parseInt(nums);
-        System.out.println(number);
-        //https://mkyong.com/java/java-how-to-split-a-string/
         String[] numList = nums.split(" ");
         System.out.println(numList);
         String num = numList[0];
+        String symbol = numList[1];
         String numDos = numList[2];
-        int numOne = Integer.parseInt(num);
-        int numTwo = Integer.parseInt(numDos);
+        double numOne = Double.parseDouble(num);
+        double numTwo = Double.parseDouble(numDos);
+        if (symbol.equals("+")){
+            double d = numOne + numTwo;
+            System.out.println(d);
+            String tvAdd = "" + d;
+            tv.setText(tvAdd);
+        } else if(symbol.equals("*")){
+            double d = numOne * numTwo;
+            System.out.println(d);
+            String tvAdd = "" + d;
+            tv.setText(tvAdd);
+        }
 
 //        for(int i = 1; i < numList.length-5;){
 //            if(i%2!=0){
@@ -112,5 +116,3 @@ Have the
 //            }
         }
     }
-
-}
