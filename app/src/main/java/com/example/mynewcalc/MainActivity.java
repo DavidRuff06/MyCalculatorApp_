@@ -105,7 +105,7 @@ Have the
         String numDos = numList[2];
         int numOne = Integer.parseInt(num);
         int numTwo = Integer.parseInt(numDos);
-        
+
 //        for(int i = 1; i < numList.length-5;){
 //            if(i%2!=0){
 //
