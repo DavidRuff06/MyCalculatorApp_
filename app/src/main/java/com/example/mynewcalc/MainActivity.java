@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
@@ -103,25 +104,29 @@ public class MainActivity extends AppCompatActivity {
         double numTwo = Double.parseDouble(numDos);
             if (symbol.equals("+")) {
                 double d = numOne + numTwo;
-                String tvAdd = "" + d;
+                //https://www.baeldung.com/java-round-decimal-number
+                DecimalFormat df = new DecimalFormat("###.#####");
+                String tvAdd = "" + df.format(d);
                 tv.setText(tvAdd);
             } else if (symbol.equals("*")) {
                 double d = numOne * numTwo;
-                String tvAdd = "" + d;
+                DecimalFormat df = new DecimalFormat("###.#####");
+                String tvAdd = "" + df.format(d);
                 tv.setText(tvAdd);
             } else if (symbol.equals("/")) {
                 double d = numOne / numTwo;
-                String tvAdd = "" + d;
+                DecimalFormat df = new DecimalFormat("###.#####");
+                String tvAdd = "" + df.format(d);
                 tv.setText(tvAdd);
             } else if (symbol.equals("-")) {
                 double d = numOne - numTwo;
-                String tvAdd = "" + d;
+                DecimalFormat df = new DecimalFormat("###.#####");
+                String tvAdd = "" + df.format(d);
                 tv.setText(tvAdd);
             }
         } catch(Exception e){
-//            tv.setText("");
-            System.getProperty("line.separator");
-            tv.setText("Error\nplease clear");
+//
+            tv.setText("ERROR");
         }
 //
 //            if (symbol.equals("+")) {
