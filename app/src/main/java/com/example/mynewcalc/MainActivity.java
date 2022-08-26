@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onClick(View v) {
         TextView tv = findViewById(R.id.calcScreen);
+        // don't have the exact website; because I'm on my home computer and my wifi gets turned off for google
         int buttonPressed = v.getId();
         final int ONE = 2131230819;
         final int TWO = 2131230820;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         }
         tv.setText(s);
         if (buttonPressed == EQUALS) {
+            // just texted till I got it, not from website, I don't know why I do stuff
+            // like that to myself
             tv.setText("");
             solve(s);
             s = "";
