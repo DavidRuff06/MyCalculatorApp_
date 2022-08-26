@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#658C8B"
+    android:backgroundTint="#658C8B"
     tools:context=".MainActivity">
 
     <Button
@@ -239,6 +240,9 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="0"
+        android:lines="2"
+        android:maxLines="4"
+        android:singleLine="false"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class MainActivity extends AppCompatActivity {
     String s = "";
@@ -15,19 +18,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Remove status bar from this activity
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
     }
 
 
-/*
+    /*
 
- */
+     */
     public void onClick(View v) {
         TextView tv = findViewById(R.id.calcScreen);
         int buttonPressed = v.getId();
         final int ONE = 2131230819;
         final int TWO = 2131230820;
-        final int THREE =2131230821;
+        final int THREE = 2131230821;
         final int FOUR = 2131230822;
         final int FIVE = 2131230823;
         final int SIX = 2131230824;
@@ -44,75 +49,100 @@ public class MainActivity extends AppCompatActivity {
         final int DECIMAL = 2131230829;
 
 
-        if (buttonPressed == ONE){
+        if (buttonPressed == ONE) {
             s += "1";
-        } else if(buttonPressed == TWO){
+        } else if (buttonPressed == TWO) {
             s += "2";
-        } else if(buttonPressed == THREE){
+        } else if (buttonPressed == THREE) {
             s += "3";
-        } else if(buttonPressed == FOUR){
+        } else if (buttonPressed == FOUR) {
             s += "4";
-        } else if(buttonPressed == FIVE){
+        } else if (buttonPressed == FIVE) {
             s += "5";
-        } else if(buttonPressed == SIX){
+        } else if (buttonPressed == SIX) {
             s += "6";
-        } else if(buttonPressed == SEVEN){
+        } else if (buttonPressed == SEVEN) {
             s += "7";
-        } else if(buttonPressed == EIGHT){
+        } else if (buttonPressed == EIGHT) {
             s += "8";
-        } else if(buttonPressed == NINE) {
+        } else if (buttonPressed == NINE) {
             s += "9";
-        } else if(buttonPressed == ZERO){
+        } else if (buttonPressed == ZERO) {
             s += "0";
-        } else if(buttonPressed == CLEAR){
+        } else if (buttonPressed == CLEAR) {
             s = "";
-        } else if(buttonPressed == DIVIDE){
+        } else if (buttonPressed == DIVIDE) {
             s += " / ";
-        } else if(buttonPressed == MULTIPLY){
+        } else if (buttonPressed == MULTIPLY) {
             s += " * ";
-        } else if(buttonPressed == MINUS){
+        } else if (buttonPressed == MINUS) {
             s += " - ";
-        } else if(buttonPressed == PLUS){
+        } else if (buttonPressed == PLUS) {
             s += " + ";
-        } else if(buttonPressed == DECIMAL) {
+        } else if (buttonPressed == DECIMAL) {
             s += ".";
         }
         tv.setText(s);
-       if(buttonPressed == EQUALS){
-           tv.setText("");
-        solve(s);
-        s = "";
+        if (buttonPressed == EQUALS) {
+            tv.setText("");
+            solve(s);
+            s = "";
+        }
     }
-    }
-/*
-Have the
- */
-    public void solve(String string){
+
+    public void solve(String string) {
         TextView tv = findViewById(R.id.calcScreen);
         String nums = string;
 
+        try{
         String[] numList = nums.split(" ");
-        System.out.println(numList);
         String num = numList[0];
-        String symbol = numList[1];
         String numDos = numList[2];
+        String symbol = numList[1];
         double numOne = Double.parseDouble(num);
         double numTwo = Double.parseDouble(numDos);
-        if (symbol.equals("+")){
-            double d = numOne + numTwo;
-            System.out.println(d);
-            String tvAdd = "" + d;
-            tv.setText(tvAdd);
-        } else if(symbol.equals("*")){
-            double d = numOne * numTwo;
-            System.out.println(d);
-            String tvAdd = "" + d;
-            tv.setText(tvAdd);
+            if (symbol.equals("+")) {
+                double d = numOne + numTwo;
+                String tvAdd = "" + d;
+                tv.setText(tvAdd);
+            } else if (symbol.equals("*")) {
+                double d = numOne * numTwo;
+                String tvAdd = "" + d;
+                tv.setText(tvAdd);
+            } else if (symbol.equals("/")) {
+                double d = numOne / numTwo;
+                String tvAdd = "" + d;
+                tv.setText(tvAdd);
+            } else if (symbol.equals("-")) {
+                double d = numOne - numTwo;
+                String tvAdd = "" + d;
+                tv.setText(tvAdd);
+            }
+        } catch(Exception e){
+//            tv.setText("");
+            System.getProperty("line.separator");
+            tv.setText("Error\nplease clear");
         }
-
-//        for(int i = 1; i < numList.length-5;){
-//            if(i%2!=0){
 //
+//            if (symbol.equals("+")) {
+//                double d = numOne + numTwo;
+//                String tvAdd = "" + d;
+//                tv.setText(tvAdd);
+//            } else if (symbol.equals("*")) {
+//                double d = numOne * numTwo;
+//                String tvAdd = "" + d;
+//                tv.setText(tvAdd);
+//            } else if (symbol.equals("/")) {
+//                double d = numOne / numTwo;
+//                String tvAdd = "" + d;
+//                tv.setText(tvAdd);
+//            } else if (symbol.equals("-")) {
+//                double d = numOne - numTwo;
+//                String tvAdd = "" + d;
+//                tv.setText(tvAdd);
 //            }
         }
     }
+
+//        }
+
